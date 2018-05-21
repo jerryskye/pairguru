@@ -1,0 +1,12 @@
+%table.table.table-striped
+  %tbody
+    - comments.reverse_each do |comment|
+      %tr
+        %td
+          %p
+            %strong= comment.author.email
+            = "(#{comment.created_at})"
+          %p= comment.body
+        %td
+          - if comment.author == current_user
+            = link_to('Remove', remove_comment_movie_path, class: 'btn btn-danger')
