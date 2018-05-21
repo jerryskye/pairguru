@@ -3,3 +3,15 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  %h2 Add a comment
+  - if current_user.comments.where(movie: @movie).exists?
+    %p
+      Sorry, you can only post one comment on a movie. You can remove your existing comment
+      = link_to('here', remove_comment_movie_path)
+  - else
+    = form_for :comment, url: add_comment_movie_path do |f|
+      .form-group
+        = f.text_area :body, class: 'form-control'
+        = f.submit 'Add comment', class: 'btn btn-default'
+%h2 All comments
+= render 'comments_table', comments: @movie.comments
