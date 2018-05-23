@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'top_commenters/raw_sql'
+  get 'top_commenters/active_record'
   devise_for :users
 
   root "home#welcome"

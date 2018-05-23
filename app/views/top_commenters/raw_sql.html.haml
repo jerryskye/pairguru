@@ -1,0 +1,4 @@
+%ul.nav.nav-pills
+  %li{role: 'presentation'}= link_to 'using ActiveRecord', top_commenters_active_record_path
+  %li.active{role: 'presentation'}= link_to 'using raw SQL', '#'
+= render 'commenters_table', commenters: @top_commenters
