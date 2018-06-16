@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:send_info, :add_comment, :remove_comment]
 
   def index
-    @movies = Movie.all.decorate
+    @movies = Movie.all.eager_load(:genre).decorate
   end
 
   def show

@@ -3,6 +3,7 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  %p= link_to 'Like', movie_likes_path(@movie), class: 'btn btn-sm btn-default', method: 'POST'
   %h2 Add a comment
   - if current_user.comments.where(movie: @movie).exists?
     %p
