@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'top_commenters/active_record'
   devise_for :users
 
+
   root "home#welcome"
   resources :genres, only: :index do
     member do
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
       post :add_comment
       get :remove_comment
     end
+
+    resources :likes, only: [:create]
+
     collection do
       get :export
     end
